@@ -1,0 +1,53 @@
+<form action = "/search" class="search-area" method="GET">
+    <div class="row">
+        <div class="col">
+            <label for="city" class="form-label">City:</label>
+            <input name="city" type="text" id="city" class="form-control" placeholder="Atlanta">
+        </div>
+        <div class="col">
+            <label for="zipcode" class="form-label">Zip Code:</label>
+            <input name="zipcode" type="text" id="zipcode" class="form-control" placeholder="30309">
+        </div>
+        <div class="col">
+            <label for="state" class="form-label">State:</label>
+            <input name="state" type="text" id="state" class="form-control" placeholder="Georgia">
+        </div>
+    </div>
+    <div class="row" id="price-row-div">
+        <div class="col">
+            <label for="minPrice" class="form-label">Minimum Price($):</label>
+            <select name="minPrice" id="minPrice" class="form-select">
+                <option selected value="0">No min</option>
+                <option value="100000">$100,000</option>
+                <option value="200000">$200,000</option>
+                <option value="300000">$300,000</option>
+                <option value="400000">$400,000</option>
+                <option value="500000">$500,000</option>
+                <option value="600000">$600,000</option>
+                <option value="700000">$700,000</option>
+                <option value="800000">$800,000</option>
+                <option value="900000">$900,000</option>
+                <option value="1000000">$1M+</option>
+            </select>
+
+        </div>
+        <div class="col">
+            <label for="maxPrice" class="form-label">Maximum Price($):</label>
+            <select name="maxPrice" id="maxPrice" class="form-select">
+                <option selected value="1000000000000">No max</option>
+                <option value="100000">$100,000</option>
+                <option value="200000">$200,000</option>
+                <option value="300000">$300,000</option>
+                <option value="400000">$400,000</option>
+                <option value="500000">$500,000</option>
+                <option value="600000">$600,000</option>
+                <option value="700000">$700,000</option>
+                <option value="800000">$800,000</option>
+                <option value="900000">$900,000</option>
+                <option value="1000000">$1M+</option>
+            </select>
+        </div>
+    </div>
+    <button class = "btn main-btn" type = "submit">Search</button>
+</form>
+

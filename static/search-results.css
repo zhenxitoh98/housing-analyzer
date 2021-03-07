@@ -1,0 +1,48 @@
+.title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.w3-card-4:hover{
+    opacity: .9;
+    cursor: pointer;
+}
+
+.w3-card-4 {
+    width: 50%;
+}
+
+.address {
+    color:white;
+    padding-top: 100px;
+}
+
+.city-state {
+    color:white;
+}
+
+#back-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.thumbnail {
+    width: 100%;
+}
+
+#main-photo {
+    width:600px;
+    height: 400px;
+}
+
+.property-details-div {
+    margin: 30px
+}
+
+#common-top-div {
+    background-color: #4D9E89;
+    height: 280px;
+    text-align: center;
+}

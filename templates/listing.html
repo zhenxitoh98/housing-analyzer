@@ -1,0 +1,58 @@
+{% extends "search_results.html" %}
+{% block head %}
+{% endblock %}
+
+    {% block title %}Listing - {{ result['property_id'] }} {% endblock %}
+
+    {% block content2 %}
+        <h1 class="address">{{ result['address']['line'] }}</h1>
+        <p class="city-state">{{ result['address']['city'] }}, {{ result['address']['state_code'] }}</p>
+    {% endblock %}
+
+    {% block content%}
+        <div class="property-details-div">
+            <button id="back-button" class = "btn btn-secondary" onclick="history.back()">Back</button>
+
+            <div class="row">
+                <div class="col-sm">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Price: ${{ result['price'] }}
+                        </li>
+                        <li class="list-group-item">
+                            Bedrooms: {{ result['beds'] }}
+                        </li>
+                        <li class="list-group-item">
+                            Bathrooms: {{ result['baths'] }}
+                        </li>
+                        <li class="list-group-item">
+                            Property ID: {{ result['property_id'] }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Property Type: {{ result['prop_type'] }}
+                        </li>
+                        {% if 'building_size' in result%}
+                            <li class="list-group-item">
+                                Building Size: {{ result['building_size']['size']|string + " " + result['building_size']['units'] }}
+                            </li>
+                        {% endif %}
+                        {% if 'lot_size' in result %}
+                            <li class="list-group-item">
+                                Lot Size: {{ result['lot_size']['size']|string + " " + result['lot_size']['units'] }}
+                            </li>
+                        {% endif %}
+                        <li class="list-group-item">
+                            Realtor: {{ result['branding']['listing_office']['list_item']['name'] }}
+                        </li>
+                    </ul>
+                </div>
+                <img id="main-photo" src="{{ result.thumbnail }}">
+            </div>
+        </div>
+
+    {% endblock %}
+
