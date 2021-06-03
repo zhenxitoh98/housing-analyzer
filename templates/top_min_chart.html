@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'extensions.html'%}
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <title>Top Max Chart</title>
+    </head>
+    <body>
+        {% include 'navbar.html'%}
+        <div id="container" style="height: 800px; width: 1000px; margin:0 auto; padding-top: 20px;"></div>
+
+        <script type="text/javascript">
+            const dom = document.getElementById("container");
+            const myChart = echarts.init(dom);
+            const app = {};
+            const zipcode = {{ zipcode|tojson }};
+            const price = {{ price|tojson }};
+            let option;
+
+            option = {
+                title: {
+                    text: 'The Six Counties with Least Expensive Average Prices in {{ state }}'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    left: 90,
+                    right: 90,
+                    bottom: 90,
+                    containLabel: true
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    start: 10,
+                    end: 30
+                }, {
+                    type: 'slider',
+                }],
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: zipcode,
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        name: 'Zipcode'
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: 'Price($)'
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Average Price',
+                        type: 'bar',
+                        data: price
+                    }
+                ]
+            };
+
+            if (option && typeof option === 'object') {
+                myChart.setOption(option);
+            }
+
+        </script>
+    </body>
+</html>

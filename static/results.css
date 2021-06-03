@@ -1,0 +1,11 @@
+.title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.w3-card-4:hover{
+    opacity: .9;
+    cursor: pointer;
+}
