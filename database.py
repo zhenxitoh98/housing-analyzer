@@ -1,11 +1,12 @@
+# Search the API
 import requests
 from firebase_admin import credentials, firestore, initialize_app
 from apscheduler.schedulers.background import BackgroundScheduler
 
-cred = credentials.Certificate('CONNECT-TO-FIREBASE')
+cred = credentials.Certificate("CONNECT-TO-FIREBASE")
 default_app = initialize_app(cred)
 db = firestore.client()
-property_ref = db.collection('properties')
+property_ref = db.collection('property')
 
 
 # if user searches for something not in the database
@@ -13,7 +14,7 @@ def search_database(city, state):
     url = "https://realtor.p.rapidapi.com/properties/v2/list-for-sale"
 
     querystring = {"city": city,
-                   "limit": "200",
+                   "limit": "30",
                    "offset": "0",
                    "state_code": "GA",
                    "sort": "relevance"}
@@ -38,7 +39,7 @@ def update_database():
     url = "https://realtor.p.rapidapi.com/properties/v2/list-for-sale"
 
     querystring = {"city": "Atlanta",
-                   "limit": "200",
+                   "limit": "30",
                    "offset": "0",
                    "state_code": "GA",
                    "sort": "relevance"}

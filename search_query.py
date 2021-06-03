@@ -1,6 +1,6 @@
+# Query the database
 from flask import request, jsonify, render_template, Blueprint
 from database import property_ref, search_database
-import json
 
 search_query = Blueprint('search', __name__)
 
@@ -40,16 +40,14 @@ def search():
         results = property_ref.where('address.postal_code', '==', zipcode).where('price', '>=', minPrice) \
             .where('price', '<=', maxPrice).get()
     else:
-        results = property_ref.where('price', '>=', minPrice).where('price', '<=', maxPrice).get()
+        results = property_ref.where('price', '>=', minPrice).where('price', '<=', maxPrice)\
+            .where('address.state', '==', 'Georgia').get()
 
     new_results = []
     if len(results) > 0:
         for result in results:
             new_results.append(result.to_dict())
     else:
-        results = search_database(city, "GA")
-        state = "Georgia"
-        for result in results:
-            new_results.append(result)
+        return render_template("search_results.html", results=new_results, city="", state="")
 
     return render_template("search_results.html", results=new_results, city=city, state=state)
