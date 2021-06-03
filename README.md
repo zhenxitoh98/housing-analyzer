@@ -1,5 +1,7 @@
 # Housing Analyzer
 
+## The application is currently live on https://housing-analyzer.herokuapp.com/.
+
 ## Members:
 * Samuel Toh
 * Mark Wu
